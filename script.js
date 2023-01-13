@@ -1,6 +1,6 @@
 'use strict';
 
-// _____________________ references____________________// 
+// _____________________global variables & references____________________// 
 
 //  modal element
 const modal = document.querySelector('.modal'); 
@@ -16,7 +16,6 @@ const btnsOpenModal = document.querySelectorAll('.show-modal');
 
 // open modal function - open up modal when button is clicked:
 const openModal = function() {
-    console.log('Button clicked');
     modal.classList.remove('hidden');
     overlay.classList.remove('hidden');
 }
@@ -28,7 +27,7 @@ const closeModal = function() {
 }
 
 
-//--------------- modal button -----------------//
+// ____________________clicking on buttons & opening modal____________________//
 
 //   created for loop for each of the buttons
 for(let i = 0; i < btnsOpenModal.length; i++) 
@@ -47,11 +46,25 @@ for(let i = 0; i < btnsOpenModal.length; i++)
     //     overlay.classList.remove('hidden'); 
     // }); 
 
-   // when clicked on the modal/content it will close
-    btnCloseModal.addEventListener('click', closeModal);
+// _____________________closing modal____________________//
 
-    // when clicked outside of the modal/content it will close
-    overlay.addEventListener('click', closeModal); 
+   // when clicked on the modal/content it will close:
+btnCloseModal.addEventListener('click', closeModal);
+
+    // when clicked outside of the modal/content it will close:
+overlay.addEventListener('click', closeModal); 
      
+// this event will happen when we hit ANY key on the keyboard:
+document.addEventListener('keydown', function(e) {
+   console.log(e.key);
+
+    // close the modal with escape key when visible  
+    // AND modal does NOT contain the hidden class then close modal:
+   if(e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        // we need to invoked closeModal(); 
+        closeModal(); 
+         }
+}); 
+
 
 
