@@ -13,7 +13,13 @@ const btnCloseModal = document.querySelector('.close-modal');
 
 //  buttons show modal; for all 3 buttons
 const btnsOpenModal = document.querySelectorAll('.show-modal'); 
-console.log(btnsOpenModal);
+
+// open modal function - open up modal when button is clicked:
+const openModal = function() {
+    console.log('Button clicked');
+    modal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+}
 
 // close modal function - purpose for it to be executed once modal is clicked:
 const closeModal = function() {
@@ -24,18 +30,22 @@ const closeModal = function() {
 
 //--------------- modal button -----------------//
 
-//   created for loop for each of the show modal buttons
+//   created for loop for each of the buttons
 for(let i = 0; i < btnsOpenModal.length; i++) 
-    btnsOpenModal[i].addEventListener('click', 
-    function() {
-        console.log('Button clicked');
 
-        // when button modal is clicked* it will remove any class list that has 'hidden' in it
-        modal.classList.remove('hidden');
+    //  when button is clicked it will open up the modal 
+    btnsOpenModal[i].addEventListener('click', openModal); 
+    
+    //  refractor with openModal function above
+    // function() {
+    //     console.log('Button clicked');
 
-        // once button is clicked the background gets 'hidden' aka blurred out
-        overlay.classList.remove('hidden'); 
-    }); 
+    //     // when button modal is clicked* it will remove any class list that has 'hidden' in it
+    //     modal.classList.remove('hidden');
+
+    //     // once button is clicked the background gets 'hidden' aka blurred out
+    //     overlay.classList.remove('hidden'); 
+    // }); 
 
    // when clicked on the modal/content it will close
     btnCloseModal.addEventListener('click', closeModal);
